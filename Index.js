@@ -1,7 +1,7 @@
 const express = require('express')
-const app = express();
 const cors = require('cors');
 const port = process.env.PORT || 5000;
+const app = express();
 app.use(cors());
 app.use(express.json());
 
@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 
 app.post('/flights', (req, res) => {
     const { from, to, date } = req.body;
-    console.log(from, to, date);
+    // console.log(from, to, date);
     const matched = offerFlight.filter(flight => flight.itineraries[0].segments[0].departure.iataCode === from &&
         flight.itineraries[0].segments[0].arrival.iataCode === to
         && flight.itineraries[0].segments[0].departure.at.includes(date) === true);
